@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors - Calm Luxury (Default) */
+    --bg-primary: #F8F6F4;
+    --bg-secondary: #E8E5E1;
+    --bg-tertiary: #D4CFC8;
+    --text-primary: #1A1816;
+    --text-secondary: #4A4A4A;
+    --text-muted: #888888;
+    --accent: #D4AF37;
+    --accent-hover: #C19F2F;
+    --interactive-blue: #64748B;
+    /* Refined Slate Blue/Grey - Neutral */
+
+    /* UI Elements */
+    --border: rgba(26, 24, 22, 0.08);
+    --shadow: rgba(26, 24, 22, 0.04);
+    --shadow-hover: rgba(26, 24, 22, 0.08);
+    --glass-bg: rgba(248, 246, 244, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.4);
+    --navbar-bg: rgba(248, 246, 244, 0.8);
+    --footer-bg: #1A1816;
+    --footer-text: #F8F6F4;
+    --card-bg: #FFFFFF;
+    --bg-newsletter: #ffffff;
+    --bg-flash-card: #fafafa;
+
+    /* Fibonacci Typography Scale */
+    --font-size-xs: 13px;
+    --font-size-sm: 21px;
+    --font-size-md: 34px;
+    --font-size-lg: 55px;
+    --font-size-xl: 89px;
+  }
+
+  :root[data-theme="dark"] {
+    /* Colors - Premium Black */
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --bg-tertiary: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #525252;
+    --accent: #d4af37;
+    --accent-hover: #C19F2F;
+    --interactive-blue: #94A3B8;
+    /* Light Slate - Neutral */
+
+    /* UI Elements */
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: rgba(0, 0, 0, 0.4);
+    --shadow-hover: rgba(0, 0, 0, 0.6);
+    --glass-bg: rgba(10, 10, 10, 0.8);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --navbar-bg: rgba(10, 10, 10, 0.8);
+    --footer-bg: #000000;
+    --footer-text: #a0a0a0;
+    --card-bg: #1a1a1a;
+    --bg-newsletter: #000000;
+    --bg-flash-card: #1a1a1a;
+  }
+
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+    /* Cursor handling moved to media query below */
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    body {
+      cursor: none;
+    }
+  }
+
+  /* Hide Scrollbar for that 'App' feel */
+  ::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}
+
+@layer components {
+
+  /* Smooth Cursor */
+  .smooth-cursor {
+    position: fixed;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    transition: all 0.15s ease;
+  }
+
+  /* Global Background System */
+  .fixed-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: var(--bg-primary);
+    transition: background-color 0.5s ease;
+  }
+
+  .gradient-mesh {
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    top: -25%;
+    left: -25%;
+    background: radial-gradient(circle at 50% 50%,
+        var(--bg-secondary) 0%,
+        var(--bg-primary) 50%,
+        var(--bg-tertiary) 100%);
+    opacity: 0.8;
+    filter: blur(80px);
+    will-change: transform;
+    /* Animation handled by GSAP in GlobalBackground.tsx for better control */
+  }
+
+  .noise-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  }
+
+  .orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  .orb-1 {
+    width: 60vh;
+    height: 60vh;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    top: -10%;
+    right: -10%;
+    opacity: 0.15;
+  }
+
+  .orb-2 {
+    width: 50vh;
+    height: 50vh;
+    background: radial-gradient(circle, var(--text-secondary) 0%, transparent 70%);
+    bottom: 10%;
+    left: -10%;
+    opacity: 0.1;
+  }
+
+  /* Hero Styles */
+  .hero {
+    padding: 140px 0 100px;
+    position: relative;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .hero-scroll-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    z-index: 5;
+    pointer-events: none;
+    opacity: 0;
+    will-change: opacity;
+  }
+
+  .hero-content {
+    max-width: 680px;
+    margin-left: 8%;
+    position: relative;
+    z-index: 10;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 28px;
+    opacity: 0.8;
+  }
+
+  .hero-title {
+    font-size: clamp(52px, 6vw, 78px);
+    font-weight: 600;
+    line-height: 1.15;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 19px;
+    line-height: 1.75;
+    color: var(--text-secondary);
+    margin-bottom: 48px;
+    max-width: 520px;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    background: var(--accent);
+    color: #2B2B2B;
+    border: none;
+    padding: 18px 40px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: none;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 12px rgba(212, 175, 55, 0.2);
+    letter-spacing: 0.3px;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 24px rgba(212, 175, 55, 0.35);
+    background: var(--accent-hover);
+  }
+
+  /* Product Card Styles (Legacy Support for Grid) */
+  .product-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border-radius: 18px;
+    overflow: hidden;
+    transition: transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 2px 8px var(--shadow);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px var(--shadow-hover);
+    border-color: var(--accent);
+  }
+}
