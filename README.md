@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="./public/git%20banner.png" width="100%" alt="Lumiere Banner" />
+  <img src="./public/git_banner.png" width="100%" alt="Lumiere Banner" />
   <h1>Lumiere | Premium E-Commerce Platform</h1>
 </div>
 
