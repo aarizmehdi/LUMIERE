@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiSearch, FiBell } from 'react-icons/fi';
+
 import { products } from '../data/products';
 import ProductCard from '../components/product/ProductCard';
 

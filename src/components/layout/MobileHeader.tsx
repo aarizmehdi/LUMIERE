@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiSearch, FiBell } from 'react-icons/fi';
-import { useShop } from '../../context/ShopContext';
+
 
 const MobileHeader: React.FC = () => {
     return (

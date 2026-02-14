@@ -1,6 +1,7 @@
-# Lumiere | Premium E-Commerce Platform
-
-![Lumiere Banner](https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?auto=format&fit=crop&w=1200&q=80)
+<div align="center">
+  <img src="./public/git%20banner.png" width="100%" alt="Lumiere Banner" />
+  <h1>Lumiere | Premium E-Commerce Platform</h1>
+</div>
 
 > A state-of-the-art, premium e-commerce solution engineered for performance, aesthetics, and seamless user experience.
 
